@@ -1,9 +1,8 @@
 import RestaurantCard from "./RestaurantCard";
-import RestList from "../utils/dummyData";
 import { useEffect, useState } from "react";
-
+import Shimmer from "./Shimmer";
 const Body = () =>{
-    const [listOfRestaurants, setListOfRestaurants] = useState(RestList);
+    const [listOfRestaurants, setListOfRestaurants] = useState([]);
 
     useEffect(()=>{
         fetchData();
@@ -18,12 +17,14 @@ const Body = () =>{
        setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);  //optional chaining
     } 
 
-   
+   if(listOfRestaurants.length === 0){
+    return(<Shimmer />);
+   }
 
     return(<div className="body">
     <div className="rating-filter">
         <button className="filter-button" onClick={()=>{
-            const RatingsAbove4 = RestList.filter(res=> res.info.avgRating>4);
+            const RatingsAbove4 = listOfRestaurants.filter(res=> res.info.avgRating>4);
             setListOfRestaurants(RatingsAbove4);
      }}>Top Rated Restraunts</button>
     </div>
