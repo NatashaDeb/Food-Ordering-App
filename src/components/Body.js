@@ -21,6 +21,7 @@ const Body = () =>{
        // setListOfRestaurants(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
        setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);  //optional chaining
        setTempResList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants); //initially we are assigning the tempary list to original list of restaurants
+      
     } 
 
     if(onlineStatus === false){ return (<h1>You are Offline !! Please Check your internet connection</h1>)}
@@ -30,7 +31,6 @@ const Body = () =>{
      (<Shimmer />) : 
         (<div className="body">
             <div className="top-bar">
-            
                 <div className="flex items-center">
                 <div className="m-4 p-4 ">
                     <input className="border border-solid border-[#62d84b]" value={searchText} onChange={(event)=>{
