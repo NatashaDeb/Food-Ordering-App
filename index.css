@@ -1,4 +1,15 @@
-.header{
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+
+
+
+
+/* .header{
     display: flex;
     justify-content: space-between;
     border: 1px solid #3bc120;
@@ -16,6 +27,7 @@
     font-size: 24px;
     display: flex;
     list-style-type: none;
+    
 }
 .nav-bar >ul >li{
     padding: 10px;
@@ -32,12 +44,14 @@
     padding: 10px;
     background-color: #f0f0f0;
    
+   
 }
 
 
 .cards-container{
     display: flex;
     flex-wrap: wrap;
+    
    
 }
 
@@ -90,3 +104,11 @@
     border: 1px solid rgb(19, 211, 48);
     margin:20px;
 }
+
+a{
+    color: black;
+}
+
+a:hover {
+    color: #00F
+ } */

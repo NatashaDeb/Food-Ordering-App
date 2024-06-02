@@ -1,26 +1,15 @@
-import { useEffect, useState } from "react";
 import ShimmerMenu from "./ShimmerMenu";
 import { useParams } from "react-router-dom";
-import { RESTAURANT_MENU_API } from "../utils/constants";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
+
 
 const RestaurantMenu = () =>{
-    const [resInfo, setResInfo] = useState(null);
     const{resId} = useParams();
-    
-    useEffect(()=>{
-        fetchMenu();
-    }, []);
-   
-    const fetchMenu = async () =>{
-        
-       const data = await fetch(RESTAURANT_MENU_API+resId); 
-        const json = await data.json();
-        setResInfo(json.data);
-    }
-
+     const resInfo = useRestaurantMenu(resId);
+     
     if(resInfo===null) return <ShimmerMenu />
      //until data is loaded show shimmer else error will come since data fetching takes time and the futher code wont get values
-
+    
     const {name, areaName, costForTwoMessage, cuisines} = resInfo?.cards[2]?.card?.card?.info
     const {itemCards} = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card
     return(
