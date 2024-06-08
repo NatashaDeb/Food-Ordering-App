@@ -1,20 +1,20 @@
-import {COMMON_COUDANARY_ID} from "../utils/constants";
-import { addItem } from "../utils/cartSlice";
 import { useDispatch } from "react-redux";
+import { removeItem } from "../utils/cartSlice";
+import { COMMON_COUDANARY_ID } from "../utils/constants";
 
-const CategoryItemsList =({categoryItemsData})=>{
+
+const CartItemsDisplay =({cartItemsData})=>{
 
     const dispatch = useDispatch();
 
-    const handleAddButton = (item) =>{
-       dispatch(addItem(item));
+    const handleRemoveButton = (item) =>{
+        dispatch(removeItem(item));
     }
-
-
+ console.log(cartItemsData);
     return(
         <div>
              
-           {categoryItemsData.map( item => <div className="p-2 m-2 border-b-2 border-neutral-300 flex justify-between" key={item?.card?.info?.id}>
+           {cartItemsData.map( item => <div className="p-2 m-2 border-b-2 border-neutral-300 flex justify-between" key={item?.card?.info?.id}>
             <span className="w-9/12">
             <div className="text-left py-2">
                 <div className="font-medium ">{item?.card?.info?.name}</div>
@@ -25,7 +25,7 @@ const CategoryItemsList =({categoryItemsData})=>{
             <span className="w-3/12">
                 <div className="p-2 ">
                 <img className="rounded w-25" src={COMMON_COUDANARY_ID+item?.card?.info?.imageId}/>
-                <button className="p-2 my-1 bg-slate-100 border border-black text-green-500 rounded" onClick={()=>handleAddButton(item)}>Add+</button>
+                <button className="p-2 my-1 bg-slate-100 border border-black text-red-600 rounded" onClick={()=>handleRemoveButton(item)}>Remove</button>
                 </div>
             </span>
             </ div> 
@@ -35,4 +35,6 @@ const CategoryItemsList =({categoryItemsData})=>{
     )
 }
 
-export default CategoryItemsList;
+export default CartItemsDisplay;
+
+//item.card.info.name

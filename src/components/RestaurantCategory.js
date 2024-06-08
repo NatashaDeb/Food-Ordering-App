@@ -1,12 +1,11 @@
-import { useState } from "react";
 import CategoryItemsList from "./CategoryItemsList";
 
-const RestaurantCategory =({categoryData}) =>{
+const RestaurantCategory =({categoryData, showItems, setShowItems}) =>{
 
-    const [showItems, setShowItems] = useState(false);
+    
 
     const showMenu = () =>{
-        setShowItems(!showItems);
+        setShowItems();
     }
 
     return(
