@@ -10,7 +10,7 @@ const CartItemsDisplay =({cartItemsData})=>{
     const handleRemoveButton = (item) =>{
         dispatch(removeItem(item));
     }
- console.log(cartItemsData);
+ 
     return(
         <div>
              

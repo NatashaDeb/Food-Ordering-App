@@ -1,7 +1,6 @@
 
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "../utils/cartSlice";
-import CategoryItemsList from "./CategoryItemsList";
 import { useState, useEffect } from "react";
 import CartItemsDisplay from "./CartItemsDisplay";
 
@@ -15,15 +14,16 @@ const Cart = () => {
         dispatch(clearCart());
     }
 
+    const calculateCartPrice = () => {
+        const total = cartItems.reduce((acc, curr) => {
+            return acc + (curr?.card?.info?.price || curr?.card?.info?.defaultPrice || 0);
+        }, 0);
+
+        setSubTotal(total);
+    }
+
     useEffect(() => {
-        const calculateCartPrice = () => {
-            const total = cartItems.reduce((acc, curr) => {
-                return acc + (curr?.card?.info?.price || curr?.card?.info?.defaultPrice || 0);
-            }, 0);
-
-            setSubTotal(total);
-        }
-
+    
         calculateCartPrice();
     }, [cartItems]);
 
