@@ -15,6 +15,7 @@ const cartSlice = createSlice({ //createSlice returns an object of cart slice
             removeItem: (state) => {
                 state.items.pop();
             },
+            
             clearCart: (state) => {
                 state.items.length = 0; 
             }
