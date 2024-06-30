@@ -4,6 +4,8 @@ const RestaurantCard = (props) => {
 
     const {restaurant} = props;
 
+    console.log(restaurant); 
+
     const {cloudinaryImageId, name, cuisines, avgRating, costForTwo} = restaurant?.info;
 
     return(
